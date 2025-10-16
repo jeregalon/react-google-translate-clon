@@ -1,8 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './App.css'
 import { useTranslator } from './hooks/useTranslator';
+import { AUTO_LANGUAGE } from './constants';
+import { ArrowsIcon } from './components/Icons';
 
 function App() {
    
@@ -31,9 +33,12 @@ function App() {
         </Col>
 
         <Col>
-          <button onClick={interchangeLanguages}>
-            Intercambiar
-          </button>
+          <Button variant='link' 
+            disabled={fromLanguage === AUTO_LANGUAGE}
+            onClick={interchangeLanguages}
+          >
+            <ArrowsIcon />
+          </Button>
         </Col>
 
         <Col>
