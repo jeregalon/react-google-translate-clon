@@ -5,6 +5,7 @@ import './App.css'
 import { useTranslator } from './hooks/useTranslator';
 import { AUTO_LANGUAGE } from './constants';
 import { ArrowsIcon } from './components/Icons';
+import { LanguageSelector } from './components/LanguageSelector';
 
 function App() {
    
@@ -21,15 +22,16 @@ function App() {
     setResult
   } = useTranslator()
 
-  console.log(fromLanguage)
-
   return (
     <Container fluid>
       <h1>Google Translate</h1>
       <Row>
         <Col>
-          <h2>From</h2>
-          {fromLanguage}
+          <LanguageSelector 
+            type='from'
+            value={fromLanguage}
+            onChange={setFromLanguage} 
+          />
         </Col>
 
         <Col>
@@ -42,8 +44,11 @@ function App() {
         </Col>
 
         <Col>
-          <h2>To</h2>
-          {toLanguage}
+          <LanguageSelector
+            type='to'
+            value={toLanguage}
+            onChange={setToLanguage}
+          />
         </Col>
       </Row>
     </Container>
