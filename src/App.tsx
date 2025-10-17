@@ -1,11 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap';
 import './App.css'
 import { useTranslator } from './hooks/useTranslator';
 import { AUTO_LANGUAGE } from './constants';
 import { ArrowsIcon } from './components/Icons';
 import { LanguageSelector } from './components/LanguageSelector';
+import { TextArea } from './components/TextArea';
+import { SectionType } from './types.d';
 
 function App() {
    
@@ -27,14 +29,22 @@ function App() {
       <h1>Google Translate</h1>
       <Row>
         <Col>
-          <LanguageSelector 
-            type='from'
-            value={fromLanguage}
-            onChange={setFromLanguage} 
-          />
+          <Stack gap={2}>
+            <LanguageSelector 
+              type={SectionType.From}
+              value={fromLanguage}
+              onChange={setFromLanguage} 
+            />
+            <TextArea
+              type={SectionType.From}
+              value={fromText}
+              onChange={setFromText}
+              loading={loading}
+            />
+          </Stack>
         </Col>
 
-        <Col>
+        <Col xs='auto'>
           <Button variant='link' 
             disabled={fromLanguage === AUTO_LANGUAGE}
             onClick={interchangeLanguages}
@@ -44,11 +54,19 @@ function App() {
         </Col>
 
         <Col>
-          <LanguageSelector
-            type='to'
-            value={toLanguage}
-            onChange={setToLanguage}
-          />
+          <Stack gap={2}>
+            <LanguageSelector
+              type={SectionType.To}
+              value={toLanguage}
+              onChange={setToLanguage}
+            />
+            <TextArea
+              type={SectionType.To}
+              value={result}
+              onChange={setResult}
+              loading={loading}
+            />
+          </Stack>
         </Col>
       </Row>
     </Container>
