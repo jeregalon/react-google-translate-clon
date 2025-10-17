@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap';
+import { Container, Row, Col, Button, Stack } from 'react-bootstrap';
 import './App.css'
 import { useTranslator } from './hooks/useTranslator';
 import { AUTO_LANGUAGE } from './constants';
@@ -33,7 +33,7 @@ function App() {
         setResult(result)
       })
       .catch(() => { setResult('Error') })
-  }, [fromText])
+  }, [fromText, fromLanguage, toLanguage])
 
   return (
     <Container fluid>
@@ -57,7 +57,7 @@ function App() {
 
         <Col xs='auto'>
           <Button variant='link' 
-            disabled={fromLanguage === AUTO_LANGUAGE}
+            disabled={fromLanguage === AUTO_LANGUAGE.auto}
             onClick={interchangeLanguages}
           >
             <ArrowsIcon />

@@ -1,10 +1,11 @@
 import { useReducer } from 'react';
 import type { State, Action, FromLanguage, Language } from '../types.d';
+import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from '../constants';
 
 // 1. Create an initial state
 const initialState = {
-  fromLanguage: 'auto',
-  toLanguage: 'en',
+  fromLanguage: AUTO_LANGUAGE.auto,
+  toLanguage: SUPPORTED_LANGUAGES.en,
   fromText: '', 
   result: '',
   loading: false 

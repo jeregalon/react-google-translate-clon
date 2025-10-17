@@ -15,7 +15,7 @@ export const LanguageSelector: FC<Props> = ({ onChange, type, value }) => {
   
   return (
     <Form.Select aria-label="Select language" onChange={handleChange} value={value}>
-      {type === SectionType.From && <option value={AUTO_LANGUAGE}>Detect language</option>}
+      {type === SectionType.From && <option value={AUTO_LANGUAGE.auto}>Detect language</option>}
       {Object.entries(SUPPORTED_LANGUAGES).map(([key, literal]) => (
         <option key={key} value={key}>
           {literal}

@@ -8,4 +8,6 @@ export const SUPPORTED_LANGUAGES = {
   it: 'Italian'
 }
 
-export const AUTO_LANGUAGE = 'auto'
+export const AUTO_LANGUAGE = {
+  auto: 'auto'
+}
