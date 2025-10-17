@@ -8,6 +8,8 @@ import { ArrowsIcon } from './components/Icons';
 import { LanguageSelector } from './components/LanguageSelector';
 import { TextArea } from './components/TextArea';
 import { SectionType } from './types.d';
+import { useEffect } from 'react';
+import { translate } from './services/translate';
 
 function App() {
    
@@ -23,6 +25,15 @@ function App() {
     setFromText,
     setResult
   } = useTranslator()
+
+  useEffect(() => {
+    translate({ fromLanguage, toLanguage, text: fromText })
+      .then((result) => {
+        if (result == null) return
+        setResult(result)
+      })
+      .catch(() => { setResult('Error') })
+  }, [fromText])
 
   return (
     <Container fluid>
